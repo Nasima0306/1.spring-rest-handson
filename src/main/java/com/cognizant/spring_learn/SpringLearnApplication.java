@@ -54,6 +54,23 @@ public class SpringLearnApplication {
         LOGGER.info("END");
     }
 
+    public void displayCountries() {
+
+        LOGGER.info("START");
+
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("country.xml");
+
+        @SuppressWarnings("unchecked")
+        java.util.ArrayList<Country> countries =
+                context.getBean("countryList",
+                        java.util.ArrayList.class);
+
+        LOGGER.debug("Countries : {}", countries);
+
+        LOGGER.info("END");
+    }
+
     public static void main(String[] args) {
 
         try {
@@ -67,7 +84,7 @@ public class SpringLearnApplication {
 
             app.displayDate();
 
-            app.displayCountry();
+            app.displayCountries();
 
         } catch (Exception e) {
 
